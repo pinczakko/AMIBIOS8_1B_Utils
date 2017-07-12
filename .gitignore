@@ -1,0 +1,6 @@
+tags
+cscope
+*.o
+*.swp
+ami_1B_splitter
+ami_1B_combiner

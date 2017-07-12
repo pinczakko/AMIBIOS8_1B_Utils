@@ -10,6 +10,8 @@
 #ifndef __AMI_1B_H__
 #define __AMI_1B_H__
 
+#include <sys/types.h> /** Required for off_t type */
+
 #define DEBUG
 #undef DEBUG
 
