@@ -21,6 +21,7 @@ Now, into the condensed user manual..
 ## Using ami_1b_splitter 
 
 This is the shell/command showing ami_1b_splitter in action:
+
 	C:\Projects\custom_tool\ami_1b_splitter.exe                                        
 	Usage:
 	C:\Projects\custom_tool\ami_1b_splitter.exe --extract-all 1B_filename 
@@ -36,54 +37,55 @@ In the third variant, this program only lists the components inside the 1B file 
 For example, you want to extract the ACPI table. These are the steps: 
 
 1. List the components, so you can find the offset of the ACPI table as follows (Shell/Command):
-		C:\Projects\custom_tool\ami_1b_splitter.exe --list 1B.bin
-		Name of 1B file: 1B.bin
-		Size of 1B header: 0x3C7 bytes
-		Number of components (including the non-present): 0x29
-		Calculated 1B file size: 0x62FAD
-		1B file size (from fstat): 0x62FAD
-		Component string exist 
-		1B component: Target physical address: 0xF0000, Name: RUN_CSEG, Present in 1B, File offset: 0x3C7, Size: 0x10000
-		1B component: Target physical address: 0x40000, Name: POST_CSEG, Present in 1B, File offset: 0x103C7, Size: 0xD092
-		1B component: Target physical address: 0x13CB0, Name: DIM_CSEG, Present in 1B, File offset: 0x1D459, Size: 0x950E
-		1B component: Target physical address: 0xEBB20, Name: I13R_CSEG, Present in 1B, File offset: 0x26967, Size: 0x44DA
-		1B component: Target physical address: 0x24BD0, Name: I13P_CSEG, Present in 1B, File offset: 0x2AE41, Size: 0x56DC
-		1B component: Target physical address: 0xEADE0, Name: FDR_CSEG, Present in 1B, File offset: 0x3051D, Size: 0x6
-		1B component: Target physical address: 0x4D0A0, Name: SETSVR_CSEG, Present in 1B, File offset: 0x30523, Size: 0x9EB2
-		1B component: Target physical address: 0xEA700, Name: I19R_CSEG2, Present in 1B, File offset: 0x3A3D5, Size: 0x6D8
-		1B component: Target physical address: 0xEBB10, Name: INT10_CSEG, Present in 1B, File offset: 0x3AAAD, Size: 0xD
-		1B component: Target physical address: 0xEADF0, Name: AFDR_CSEG, Present in 1B, File offset: 0x3AABA, Size: 0xD1A
-		1B component: Target physical address: 0x13520, Name: INTERFACE_CSEG, File offset: 0x0, Size: 0x78B
-		1B component: Target physical address: 0x2A2B0, Name: PMM_CSEG, Present in 1B, File offset: 0x3B7D4, Size: 0x52A
-		1B component: Target physical address: 0xADA90, Name: SMI_BSPCSEG, Present in 1B, File offset: 0x3BCFE, Size: 0xB73D
-		1B component: Target physical address: 0x2EAD0, Name: SMBIOS_CSEG, Present in 1B, File offset: 0x4743B, Size: 0xE2D
-		1B component: Target physical address: 0xA0000, Name: SMI_BSPENTRYSEG, Present in 1B, File offset: 0x48268, Size: 0x140
-		1B component: Target physical address: 0x56F60, Name: AGESA_CSEG, Present in 1B, File offset: 0x483A8, Size: 0x3EFE
-		1B component: Target physical address: 0xB91D0, Name: SMI_BSPCSEG_32, Present in 1B, File offset: 0x4C2A6, Size: 0x2C1
-		1B component: Target physical address: 0x5AE60, Name: ACPITBL_SEG, Present in 1B, File offset: 0x4C567, Size: 0x5A06
-		1B component: Target physical address: 0x2E4D0, Name: SBMISC_CSEG, Present in 1B, File offset: 0x51F6D, Size: 0x5F7
-		1B component: Target physical address: 0xA0300, Name: SMI_AP1ENTRYSEG, Present in 1B, File offset: 0x52564, Size: 0x8
-		1B component: Target physical address: 0xA0600, Name: SMI_AP2ENTRYSEG, Present in 1B, File offset: 0x5256C, Size: 0x8
-		1B component: Target physical address: 0xA0900, Name: SMI_AP3ENTRYSEG, Present in 1B, File offset: 0x52574, Size: 0x8
-		1B component: Target physical address: 0x400, Name: BDA_DSEG, File offset: 0x0, Size: 0x110
-		1B component: Target physical address: 0x510, Name: BBLK_DSEG, File offset: 0x0, Size: 0x13
-		1B component: Target physical address: 0x1D1C0, Name: DIM_DSEG, Present in 1B, File offset: 0x5257C, Size: 0x7A0B
-		1B component: Target physical address: 0x0, Name: IVT_DSEG, File offset: 0x0, Size: 0x400
-		1B component: Target physical address: 0x2A7E0, Name: PMM_DSEG, Present in 1B, File offset: 0x59F87, Size: 0x101F
-		1B component: Target physical address: 0x2B800, Name: POST_DSEG, Present in 1B, File offset: 0x5AFA6, Size: 0x20F8
-		1B component: Target physical address: 0x30000, Name: TEMP_DSEG, File offset: 0x0, Size: 0x10000
-		1B component: Target physical address: 0x4530, Name: USEG, File offset: 0x0, Size: 0xEFF0
-		1B component: Target physical address: 0xA8900, Name: SMI_BSPDSEG, Present in 1B, File offset: 0x5D09E, Size: 0x5183
-		1B component: Target physical address: 0xB94A0, Name: SMI_STRUCSEG, Present in 1B, File offset: 0x62221, Size: 0x1C8
-		1B component: Target physical address: 0xA7E00, Name: SMI_BSPDUMPSEG, File offset: 0x0, Size: 0x200
-		1B component: Target physical address: 0xE6000, Name: USB_DATA, File offset: 0x0, Size: 0x3000
-		1B component: Target physical address: 0x2D900, Name: AGESA_DSEG, Present in 1B, File offset: 0x623E9, Size: 0xBC4
-		1B component: Target physical address: 0xA8100, Name: SMI_AP1DUMPSEG, File offset: 0x0, Size: 0x200
-		1B component: Target physical address: 0xA8400, Name: SMI_AP2DUMPSEG, File offset: 0x0, Size: 0x200
-		1B component: Target physical address: 0xA8700, Name: SMI_AP3DUMPSEG, File offset: 0x0, Size: 0x200
-		1B component: Target physical address: 0x530, Name: STACK_SEG, File offset: 0x0, Size: 0x4000
-		1B component: Target physical address: 0xA7600, Name: SMI_BSPSTACKSEG, File offset: 0x0, Size: 0x800
-		1B component: Target physical address: 0xC0000, Name: SHADOWREGIONS, File offset: 0x0, Size: 0x20000
+
+	C:\Projects\custom_tool\ami_1b_splitter.exe --list 1B.bin
+	Name of 1B file: 1B.bin
+	Size of 1B header: 0x3C7 bytes
+	Number of components (including the non-present): 0x29
+	Calculated 1B file size: 0x62FAD
+	1B file size (from fstat): 0x62FAD
+	Component string exist 
+	1B component: Target physical address: 0xF0000, Name: RUN_CSEG, Present in 1B, File offset: 0x3C7, Size: 0x10000
+	1B component: Target physical address: 0x40000, Name: POST_CSEG, Present in 1B, File offset: 0x103C7, Size: 0xD092
+	1B component: Target physical address: 0x13CB0, Name: DIM_CSEG, Present in 1B, File offset: 0x1D459, Size: 0x950E
+	1B component: Target physical address: 0xEBB20, Name: I13R_CSEG, Present in 1B, File offset: 0x26967, Size: 0x44DA
+	1B component: Target physical address: 0x24BD0, Name: I13P_CSEG, Present in 1B, File offset: 0x2AE41, Size: 0x56DC
+	1B component: Target physical address: 0xEADE0, Name: FDR_CSEG, Present in 1B, File offset: 0x3051D, Size: 0x6
+	1B component: Target physical address: 0x4D0A0, Name: SETSVR_CSEG, Present in 1B, File offset: 0x30523, Size: 0x9EB2
+	1B component: Target physical address: 0xEA700, Name: I19R_CSEG2, Present in 1B, File offset: 0x3A3D5, Size: 0x6D8
+	1B component: Target physical address: 0xEBB10, Name: INT10_CSEG, Present in 1B, File offset: 0x3AAAD, Size: 0xD
+	1B component: Target physical address: 0xEADF0, Name: AFDR_CSEG, Present in 1B, File offset: 0x3AABA, Size: 0xD1A
+	1B component: Target physical address: 0x13520, Name: INTERFACE_CSEG, File offset: 0x0, Size: 0x78B
+	1B component: Target physical address: 0x2A2B0, Name: PMM_CSEG, Present in 1B, File offset: 0x3B7D4, Size: 0x52A
+	1B component: Target physical address: 0xADA90, Name: SMI_BSPCSEG, Present in 1B, File offset: 0x3BCFE, Size: 0xB73D
+	1B component: Target physical address: 0x2EAD0, Name: SMBIOS_CSEG, Present in 1B, File offset: 0x4743B, Size: 0xE2D
+	1B component: Target physical address: 0xA0000, Name: SMI_BSPENTRYSEG, Present in 1B, File offset: 0x48268, Size: 0x140
+	1B component: Target physical address: 0x56F60, Name: AGESA_CSEG, Present in 1B, File offset: 0x483A8, Size: 0x3EFE
+	1B component: Target physical address: 0xB91D0, Name: SMI_BSPCSEG_32, Present in 1B, File offset: 0x4C2A6, Size: 0x2C1
+	1B component: Target physical address: 0x5AE60, Name: ACPITBL_SEG, Present in 1B, File offset: 0x4C567, Size: 0x5A06
+	1B component: Target physical address: 0x2E4D0, Name: SBMISC_CSEG, Present in 1B, File offset: 0x51F6D, Size: 0x5F7
+	1B component: Target physical address: 0xA0300, Name: SMI_AP1ENTRYSEG, Present in 1B, File offset: 0x52564, Size: 0x8
+	1B component: Target physical address: 0xA0600, Name: SMI_AP2ENTRYSEG, Present in 1B, File offset: 0x5256C, Size: 0x8
+	1B component: Target physical address: 0xA0900, Name: SMI_AP3ENTRYSEG, Present in 1B, File offset: 0x52574, Size: 0x8
+	1B component: Target physical address: 0x400, Name: BDA_DSEG, File offset: 0x0, Size: 0x110
+	1B component: Target physical address: 0x510, Name: BBLK_DSEG, File offset: 0x0, Size: 0x13
+	1B component: Target physical address: 0x1D1C0, Name: DIM_DSEG, Present in 1B, File offset: 0x5257C, Size: 0x7A0B
+	1B component: Target physical address: 0x0, Name: IVT_DSEG, File offset: 0x0, Size: 0x400
+	1B component: Target physical address: 0x2A7E0, Name: PMM_DSEG, Present in 1B, File offset: 0x59F87, Size: 0x101F
+	1B component: Target physical address: 0x2B800, Name: POST_DSEG, Present in 1B, File offset: 0x5AFA6, Size: 0x20F8
+	1B component: Target physical address: 0x30000, Name: TEMP_DSEG, File offset: 0x0, Size: 0x10000
+	1B component: Target physical address: 0x4530, Name: USEG, File offset: 0x0, Size: 0xEFF0
+	1B component: Target physical address: 0xA8900, Name: SMI_BSPDSEG, Present in 1B, File offset: 0x5D09E, Size: 0x5183
+	1B component: Target physical address: 0xB94A0, Name: SMI_STRUCSEG, Present in 1B, File offset: 0x62221, Size: 0x1C8
+	1B component: Target physical address: 0xA7E00, Name: SMI_BSPDUMPSEG, File offset: 0x0, Size: 0x200
+	1B component: Target physical address: 0xE6000, Name: USB_DATA, File offset: 0x0, Size: 0x3000
+	1B component: Target physical address: 0x2D900, Name: AGESA_DSEG, Present in 1B, File offset: 0x623E9, Size: 0xBC4
+	1B component: Target physical address: 0xA8100, Name: SMI_AP1DUMPSEG, File offset: 0x0, Size: 0x200
+	1B component: Target physical address: 0xA8400, Name: SMI_AP2DUMPSEG, File offset: 0x0, Size: 0x200
+	1B component: Target physical address: 0xA8700, Name: SMI_AP3DUMPSEG, File offset: 0x0, Size: 0x200
+	1B component: Target physical address: 0x530, Name: STACK_SEG, File offset: 0x0, Size: 0x4000
+	1B component: Target physical address: 0xA7600, Name: SMI_BSPSTACKSEG, File offset: 0x0, Size: 0x800
+	1B component: Target physical address: 0xC0000, Name: SHADOWREGIONS, File offset: 0x0, Size: 0x20000
 
 2. From the list the components, you find that the offset of the ACPI table is 0x4C567 
 (offset here means file offset of the component). Now, extract the component (Shell/Command):
