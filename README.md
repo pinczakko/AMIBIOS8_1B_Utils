@@ -98,7 +98,7 @@ Now you can edit the ACPITBL_SEG.bin as needed.
 
 ## Using ami_1b_combiner 
 
-This is the shell/command showing ami_1b_combiner in action:
+This is the shell/command prompt showing ami_1b_combiner in action:
 
 	C:\Projects\custom_tool\wine ami_1b_combiner.exe 
 	Usage:
@@ -112,10 +112,12 @@ is incorrect, it will bail out with error message.
 
 In the _second_ variant, this program only lists the components inside the 1B file.
 
-For example, you want to insert the modified ACPI Table that you extract previously with ami_1b_splitter.exe.
- These are the steps: 
+_For example, the steps to insert the modified ACPI Table that you extract previously are as follows:_
 
-1. List the components, so you can find the offset of the ACPI table as follows:
+### List The 1B Module Components
+
+The _first_ step is to list the 1B module components, so you can find the offset of the ACPI table as follows:
+
 	C:\Projects\custom_tool\ami_1b_combiner.exe --list 1B.bin           
 	Name of 1B file: 1B.bin
 	Size of 1B header: 0x3C7 bytes
@@ -165,22 +167,25 @@ For example, you want to insert the modified ACPI Table that you extract previou
 	1B component: Target physical address: 0xA7600, Name: SMI_BSPSTACKSEG, File offset: 0x0, Size: 0x800
 	1B component: Target physical address: 0xC0000, Name: SHADOWREGIONS, File offset: 0x0, Size: 0x20000
 
-2. From the list the components, you find that the offset of the ACPI table is 0x4C567 (offset here means file offset of the component). Now, insert the component: 
+### Insert The 1B Module Component
+
+The _second_ (last) step is to insert the component into the 1B module. From the list of 1B module componentsabove, you find that the offset of the ACPI table is 0x4C567 (offset here means file offset of the component). Now, insert the component: 
+
 	C:\Projects\custom_tool\ami_1b_combiner.exe --insert 1B.bin ACPITBL_SEG.bin 0x4C567
 	Successfully writing modified 1B file
+
 That's it the modified ACPI Table is now in the 1B module. 
 
 ## Advanced usage
 
-If you are working with the same component in the 1B file over and over, you can use Windows batch file. 
+ - You can use Windows batch file if you are working with the same component in the 1B file over and over in Windows 
 
-OR, if you compiled the utilities yourself in Linux or other variants of Unix, 
-you can use shell scripts to automate the process of extraction and insertion without the need 
-to list the offset of the component.
+ - You can use shell scripts to automate the process of extraction and insertion without the need 
+to list the offset of the componentIf you compiled the utilities yourself in Linux or other variants of Unix.
 
 ## BIG FAT NOTE
 
-These Windows port of the utilities were only tested with Wine. Therefore, I don't know whether they will behave the same way in a real Windows machine. Let me know.
+The Windows port of the utilities were only tested with Wine. Therefore, I don't know whether they will behave the same way in a real Windows machine. Let me know.
 
 ## LICENSE
 
