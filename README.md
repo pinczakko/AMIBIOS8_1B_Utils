@@ -1,3 +1,13 @@
+# README
+
+The utilities produced by the source code ONLY work with AMIBIOS8 (legacy BIOS) 1B module. 
+You can obtain the 1B module from AMIBIOS8 BIOS binary by using AMI Module Management Tool (MMTool) utility (https://ami.com/en/products/bios-uefi-tools-and-utilities/bios-uefi-utilities/).
+
+The source code maybe used to build TWO different AMIBIOS 1B module utilities, 
+ami_1b_splitter and ami_1b_combiner. 
+
+## AMIBIOS Binary Support
+
 First about which 1B modules supported:
 
 The current AMI BIOS splitter/combiner utilities 
@@ -6,12 +16,12 @@ only support "AMIBIOS8" variants, i.e. AMIBIOS binaries which are built based on
 If your BIOS are from 2004 upwards, chances are it's based on the AMIBIOS8 code base.
 
 
-Now, into the condensed user manual: 
+Now, into the condensed user manual..
 
-====================================
-Using ami_1b_splitter 
-====================================
-code:
+### Using ami_1b_splitter 
+
+Shell/Command:
+
 C:\Projects\custom_tool\ami_1b_splitter.exe                                        
 Usage:
 C:\Projects\custom_tool\ami_1b_splitter.exe --extract-all 1B_filename 
@@ -27,7 +37,9 @@ In the third variant, this program only lists the components inside the 1B file 
 ==>For example, you want to extract the ACPI table. These are the steps: 
 
 1.) List the components, so you can find the offset of the ACPI table as follows:
-code:
+
+Shell/Command:
+
 C:\Projects\custom_tool\ami_1b_splitter.exe --list 1B.bin
 Name of 1B file: 1B.bin
 Size of 1B header: 0x3C7 bytes
@@ -85,10 +97,9 @@ Writing component file: ACPITBL_SEG.bin , size: 0x5A06
 Now you can edit the ACPITBL_SEG.bin
 
 
-====================================
-Using ami_1b_combiner 
-====================================
-code:
+### Using ami_1b_combiner 
+
+Shell/Command:
   
 C:\Projects\custom_tool\wine ami_1b_combiner.exe 
 Usage:
@@ -158,25 +169,27 @@ Component string exist
 
 2.) From the list the components, you find that the offset of the ACPI table is 0x4C567 
 (offset here means file offset of the component). Now, insert the component: 
-code:
+
+Shell/command:
+
 C:\Projects\custom_tool\ami_1b_combiner.exe --insert 1B.bin ACPITBL_SEG.bin 0x4C567
 Successfully writing modified 1B file
 That's it the modified ACPI Table is now in the 1B module. 
 
 
-====================================
-Advanced usage
-====================================
+### Advanced usage
 
 If you are working with the same component in the 1B file over and over, you can use Windows batch file. 
 
-Or, if you compiled the utilities yourself in Linux or other variants of Unix, 
+OR, if you compiled the utilities yourself in Linux or other variants of Unix, 
 you can use shell scripts to automate the process of extraction and insertion without the need 
 to list the offset of the component.
 
-====================================
-BIG FAT NOTE
-====================================
-These Windows port of the utilities were only tested with Wine. Therefore, I haven't know whether they will behave the same way in a real Windows machine. Let me know.
+## BIG FAT NOTE
 
---------------------
+These Windows port of the utilities were only tested with Wine. Therefore, I don't know whether they will behave the same way in a real Windows machine. Let me know.
+
+## LICENSE
+
+The source code is licensed under GPL v2 (https://www.gnu.org/licenses/gpl-2.0.html). 
+
