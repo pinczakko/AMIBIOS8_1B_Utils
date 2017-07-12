@@ -8,10 +8,8 @@ ami_1b_splitter and ami_1b_combiner.
 
 ## AMIBIOS Binary Support
 
-First about which 1B modules supported:
-
 The current AMI BIOS splitter/combiner utilities 
-only support "AMIBIOS8" variants, i.e. AMIBIOS binaries which are built based on AMIBIOS8 code base. 
+only support 1B modules from "AMIBIOS8" variants, i.e. AMIBIOS binaries which are built based on AMIBIOS8 code base. 
 
 If your BIOS are from 2004 upwards, chances are it's based on the AMIBIOS8 code base.
 
@@ -34,9 +32,11 @@ In the second variant, this program will extract only ONE component which starts
 
 In the third variant, this program only lists the components inside the 1B file along with their information.
 
-For example, you want to extract the ACPI table. These are the steps: 
+_For example, the steps to extract the ACPI table are as follows:_
 
-1. List the components, so you can find the offset of the ACPI table as follows (Shell/Command):
+### List The 1B Module Components
+
+The _first_ step is to list the components of the 1B module, so you can find the offset of the ACPI table. This is how to do that in shell/command prompt:
 
 	C:\Projects\custom_tool\ami_1b_splitter.exe --list 1B.bin
 	Name of 1B file: 1B.bin
@@ -87,15 +87,19 @@ For example, you want to extract the ACPI table. These are the steps:
 	1B component: Target physical address: 0xA7600, Name: SMI_BSPSTACKSEG, File offset: 0x0, Size: 0x800
 	1B component: Target physical address: 0xC0000, Name: SHADOWREGIONS, File offset: 0x0, Size: 0x20000
 
-2. From the list the components, you find that the offset of the ACPI table is 0x4C567 
-(offset here means file offset of the component). Now, extract the component (Shell/Command):
+### Extract The "Target" 1B Module Component 
+
+The _second_ (last) step is to extract the 1B module component that you want. From the list of the componentsin the example above, you find that the offset of the ACPI table is 0x4C567 (offset here means file offset of the component). Now, you can extract the component with the following command:
+
 	C:\Projects\custom_tool\ami_1b_splitter.exe --extract 1B.bin 0x4C567 
 	Writing component file: ACPITBL_SEG.bin , size: 0x5A06
-Now you can edit the ACPITBL_SEG.bin
+
+Now you can edit the ACPITBL_SEG.bin as needed.
 
 ## Using ami_1b_combiner 
 
 This is the shell/command showing ami_1b_combiner in action:
+
 	C:\Projects\custom_tool\wine ami_1b_combiner.exe 
 	Usage:
 	C:\Projects\custom_tool\ami_1b_combiner.exe --insert  1B_filename  component_filename  component_offset 
