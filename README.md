@@ -14,6 +14,8 @@
 
 ### Producing Executables
 
+The source code produces TWO different AMIBIOS 1B module utilities: ```ami_1b_splitter``` and ```ami_1b_combiner```.
+
  - Invoke ```build.sh``` script in Linux/Unix to build the executable for Unix/Linux.
 
  - Invoke ```cross_build.sh``` script in Linux to cross compile with mingw-w64 to produce 64-bit executable for Windows (64-bit).
@@ -22,9 +24,6 @@
 
 The utilities produced by the source code ONLY work with AMIBIOS8 (legacy BIOS) 1B module. 
 You can obtain the 1B module from AMIBIOS8 BIOS binary by using AMI Module Management Tool (MMTool) utility (https://ami.com/en/products/bios-uefi-tools-and-utilities/bios-uefi-utilities/).
-
-The source code maybe used to build TWO different AMIBIOS 1B module utilities, 
-ami_1b_splitter and ami_1b_combiner. 
 
 The current AMI BIOS splitter/combiner utilities 
 only support 1B modules from "AMIBIOS8" variants, i.e. AMIBIOS binaries which are built based on AMIBIOS8 code base. 
