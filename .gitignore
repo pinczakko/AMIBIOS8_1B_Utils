@@ -4,3 +4,4 @@ cscope
 *.swp
 ami_1b_splitter
 ami_1b_combiner
+tests

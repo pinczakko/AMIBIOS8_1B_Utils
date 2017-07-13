@@ -101,7 +101,7 @@ static void show_help(char *argv[])
 	       "the replaced component size and start offset, if the program found the start offset\n"
 	       "is incorrect, it will bail out with error message.\n\n"
 	       "In the second variant, this program only lists the components inside the 1B file\n"
-	       "along with their information", argv[0], argv[0]);
+	       "along with their information\n", argv[0], argv[0]);
 }
 
 
