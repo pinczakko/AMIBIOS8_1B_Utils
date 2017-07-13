@@ -411,8 +411,7 @@ STATUS replace_component_data(_1B_DATA_T * p_data,
 			      _1B_COMPONENT_T * p_component,
 			      const char *filename)
 {
-	s32_t delta = 0;
-	u32_t old_len = 0, new_len = 0, i = 0;
+	u32_t old_len = 0, new_len = 0;
 	struct stat f_stat;
 	void *p_buf = NULL;
 
@@ -530,11 +529,11 @@ get_component_string_start(void *p_header_buf,
 			*p_offset = offset;
 			return STRING_PRESENT;
 		}
-	} else {
-		*p_pad_length = 0;
-		return STRING_ABSENT;
-	}
 
+	} 
+
+	*p_pad_length = 0;
+	return STRING_ABSENT;
 }
 
 /*
@@ -881,8 +880,8 @@ STATUS list_components(_1B_DATA_T * p_data)
 	printf("Length of 1B header: 0x%X bytes\n", p_data->header.length);
 	printf("Number of components (including the non-present): "
 	       "0x%X\n", p_data->header.component_info_count);
-	printf("Calculated 1B file size: 0x%X\n", p_data->calculated_size);
-	printf("1B file size (from fstat): 0x%X\n", p_data->size);
+	printf("Calculated 1B file size: 0x%lX\n", p_data->calculated_size);
+	printf("1B file size (from fstat): 0x%lX\n", p_data->size);
 
 	if (p_data->header.string_status == STRING_PRESENT) {
 		printf("Component string exist \n");
@@ -905,7 +904,7 @@ STATUS list_components(_1B_DATA_T * p_data)
 			printf("Present in 1B, ");
 		}
 
-		printf("File offset: 0x%X, ",
+		printf("File offset: 0x%lX, ",
 		       p_data->component[i].file_offset);
 		printf("Size: 0x%X\n", p_data->component[i].length);
 

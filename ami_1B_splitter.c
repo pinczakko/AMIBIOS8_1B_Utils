@@ -78,9 +78,7 @@ static STATUS write_all_components(_1B_DATA_T * p_data)
  */
 static STATUS write_one_component(_1B_DATA_T * p_data, off_t file_offset)
 {
-	int i;
 	_1B_COMPONENT_T *p_comp = NULL;
-	STATUS stat;
 
 	if (p_data == NULL) {
 		printf("ERROR: input file data structure is NULL\n");
@@ -152,7 +150,7 @@ int main(int argc, char *argv[])
 		printf("argc = 4, --extract\n");
 #endif
 		act = EXTRACT_ONE;
-		if (sscanf(argv[3], "%X", &component_offset) == EOF) {
+		if (sscanf(argv[3], "%lX", &component_offset) == EOF) {
 			printf("component_offset is incorrect\n");
 			return 0;
 		} else if (component_offset <= HEADER_INFO_LENGTH) {

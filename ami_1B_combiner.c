@@ -43,8 +43,6 @@ static STATUS
 replace_component(_1B_DATA_T * p_data, off_t component_offset,
 		  char *component_filename)
 {
-	int i;
-	off_t component_size = 0;
 	_1B_COMPONENT_T *p_comp = NULL;
 	STATUS status;
 
@@ -121,7 +119,6 @@ int main(int argc, char *argv[])
  *  their information
  *
  */
-	int f_out;
 	off_t component_offset = 0;
 	_1B_DATA_T *p_1b_data;
 	ACTION act;
@@ -149,7 +146,7 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 
-		if (sscanf(argv[4], "%X", &component_offset) == EOF) {
+		if (sscanf(argv[4], "%lX", &component_offset) == EOF) {
 			printf("component_offset is incorrect\n");
 			return 0;
 		}
