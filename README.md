@@ -4,7 +4,7 @@
  
 ### Prerequisites
  
- - Linux/Unix machine (or possibly Mingw in Windows) to compile the code. The current code is only tested in Arch linux. 
+ - Linux/Unix machine (or possibly Mingw in Windows) to compile the code. The current version compilation/cross-compilation is only tested in Arch linux (gcc v7.1.1). 
 
  - CMake, you need CMake to generate the Makefile(s). 
 
@@ -23,19 +23,19 @@ The source code produces TWO different AMIBIOS 1B module utilities: ```ami_1b_sp
 ## AMIBIOS Binary Support
 
 The utilities produced by the source code ONLY work with AMIBIOS8 (legacy BIOS) 1B module. 
+The 1B module is the main module of AMIBIOS8, akin to ```original.tmp``` in (legacy) Award BIOS.
+
+The current AMI BIOS splitter/combiner utilities only support 1B modules from "AMIBIOS8" variants, i.e. AMIBIOS binaries which are built based on AMIBIOS8 code base. 
+
+If your (legacy) AMI BIOS are from 2004 upwards, chances are it's based on the AMIBIOS8 code base.
+
 You can obtain the 1B module from AMIBIOS8 BIOS binary by using AMI Module Management Tool (MMTool) utility (https://ami.com/en/products/bios-uefi-tools-and-utilities/bios-uefi-utilities/).
-
-The current AMI BIOS splitter/combiner utilities 
-only support 1B modules from "AMIBIOS8" variants, i.e. AMIBIOS binaries which are built based on AMIBIOS8 code base. 
-
-If your BIOS are from 2004 upwards, chances are it's based on the AMIBIOS8 code base.
-
 
 Now, into the condensed user manual..
 
 ## Using ami_1b_splitter 
 
-This is the shell/command showing ami_1b_splitter in action:
+This is the shell/command showing ```ami_1b_splitter``` in action:
 
 	C:\Projects\custom_tool\ami_1b_splitter.exe                                        
 	Usage:
@@ -45,7 +45,7 @@ This is the shell/command showing ami_1b_splitter in action:
 
 In the first variant, this program will extract all components into individual files. 
 
-In the second variant, this program will extract only ONE component which starts at component_offset in the 1B_file
+In the second variant, this program will extract only ONE component which starts at ```component_offset``` in the 1B_file
 
 In the third variant, this program only lists the components inside the 1B file along with their information.
 
@@ -111,18 +111,18 @@ The _second_ (last) step is to extract the 1B module component that you want. Fr
 	C:\Projects\custom_tool\ami_1b_splitter.exe --extract 1B.bin 0x4C567 
 	Writing component file: ACPITBL_SEG.bin , size: 0x5A06
 
-Now you can edit the ACPITBL_SEG.bin as needed.
+Now you can edit the ```ACPITBL_SEG.bin``` as needed.
 
 ## Using ami_1b_combiner 
 
-This is the shell/command prompt showing ami_1b_combiner in action:
+This is the shell/command prompt showing ```ami_1b_combiner``` in action:
 
 	C:\Projects\custom_tool\wine ami_1b_combiner.exe 
 	Usage:
 	C:\Projects\custom_tool\ami_1b_combiner.exe --insert  1B_filename  component_filename  component_offset 
 	C:\Projects\custom_tool\ami_1b_combiner.exe --list   1B_filename 
 
-In the _first_ variant, this program will combine the component named component_filename
+In the _first_ variant, this program will combine the component named ```component_filename```
 to the 1B file starting at offset component offset. The program checks 
 the inserted component size and start offset, if the program found either of them
 is incorrect, it will bail out with error message.
@@ -195,7 +195,7 @@ That's it the modified ACPI Table is now in the 1B module.
 
 ## Advanced usage
 
- - You can use Windows batch file if you are working with the same component in the 1B file over and over in Windows 
+ - You can use Windows _batch file_ if you are working with the same component in the 1B file over and over in Windows 
 
  - You can use shell scripts to automate the process of extraction and insertion without the need 
 to list the offset of the component, if you compiled the utilities yourself in Linux or other variants of Unix.
@@ -203,7 +203,7 @@ to list the offset of the component, if you compiled the utilities yourself in L
 ## Big FAT Note
 
 The Windows port of the utilities were only tested with Wine and Windows 10 Home Edition. 
-Therefore, I don't know whether they will behave the same way in other Windows 64-bit machine(s). 
+Therefore, I don't know whether they will behave the same way in other Windows 64-bit version(s). 
 Let me know.
 
 ## License
