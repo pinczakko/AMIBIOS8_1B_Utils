@@ -198,13 +198,15 @@ That's it the modified ACPI Table is now in the 1B module.
  - You can use Windows batch file if you are working with the same component in the 1B file over and over in Windows 
 
  - You can use shell scripts to automate the process of extraction and insertion without the need 
-to list the offset of the componentIf you compiled the utilities yourself in Linux or other variants of Unix.
+to list the offset of the component, if you compiled the utilities yourself in Linux or other variants of Unix.
 
-## BIG FAT NOTE
+## Big FAT Note
 
-The Windows port of the utilities were only tested with Wine. Therefore, I don't know whether they will behave the same way in a real Windows machine. Let me know.
+The Windows port of the utilities were only tested with Wine and Windows 10 Home Edition. 
+Therefore, I don't know whether they will behave the same way in other Windows 64-bit machine(s). 
+Let me know.
 
-## LICENSE
+## License
 
 The source code is licensed under GPL v2 (https://www.gnu.org/licenses/gpl-2.0.html). 
 
